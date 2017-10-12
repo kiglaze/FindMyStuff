@@ -35,6 +35,9 @@ app.get("/", function (req, res) {
     res.render("index", {});
 });
 
+// Routes
+// =============================================================
+require("./routes/room-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // ===============================================================
