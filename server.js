@@ -12,6 +12,8 @@ var app = express();
 // Specify the port.
 var PORT = process.env.PORT || 3000;
 
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -29,7 +31,9 @@ app.set("view engine", "handlebars");
 
 
 
-
+app.get("/", function(req, res) {
+  res.render("index", {});
+});
 
 
 // Starts the server to begin listening
