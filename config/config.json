@@ -2,7 +2,7 @@
   "development": {
     "username": "kiglaze",
     "password": "qwerty99asdf",
-    "database": "passport_demo",
+    "database": "find_my_stuff_db",
     "host": "localhost",
     "dialect": "mysql"
   },
