@@ -45,9 +45,17 @@ module.exports = function(app) {
   // });
 
   app.get("/members", isAuthenticated, function(req, res) {
-    db.Room.findAll({
-    }).then(function (dbRooms) {
-      res.render("members", {rooms: dbRooms});
+    db.User.findOne({
+        include: [db.Room],
+        where: {
+            id: req.user.id
+        }
+    }).then(function (dbUser) {
+        res.render("members", {
+          email: dbUser.email,
+          id: dbUser.id,
+          rooms: dbUser.Rooms
+        });
     });
   });
 
