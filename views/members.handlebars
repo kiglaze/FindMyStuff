@@ -12,5 +12,15 @@
 	  	</li>
 	  {{/each}}
 	</ul>
+      <form id="room-form">
+          Name: <input placeholder="Name" id="room-name" type="text" />
+          Description: <input placeholder="Description" id="room-description" type="text" />
+          <input id="user-id" type="hidden" value="{{this.id}}"/>
+
+          <button type="submit" class="btn btn-success">Add Room</button>
+      </form>
   </div>
+
+  <script type="text/javascript" src="/assets/js/login/members.js"></script>
+
 
