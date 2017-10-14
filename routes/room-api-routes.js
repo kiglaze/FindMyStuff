@@ -1,18 +1,6 @@
 var db = require("../models");
 
 module.exports = function (app) {
-    // get all rooms that belong to a specific user
-    app.get("/api/rooms/:userId", function (req, res) {
-        db.Room.findAll({
-            where: {
-                UserId: req.params.userId
-            },
-            include: [db.StorageArea]
-        }).then(function (dbRooms) {
-            res.json(dbRooms);
-        });
-    });
-
     // get a specific room by id
     app.get("/api/rooms/:id", function (req, res) {
         // Here we add an "include" property to our options in our findOne query
