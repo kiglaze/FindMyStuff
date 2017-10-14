@@ -5,12 +5,46 @@
         <p>User: {{this.email}}</p>
       </div>
     </div>
-    <ul>
+    <div id="accordion" role="tablist" aria-multiselectable="true">
 	  {{#each rooms}}
-	  	<li>
-	  	   <p>Name of room: {{this.name}}</p>
-	  	</li>
-	  {{/each}}
-	</ul>
+
+
+<div class="card">
+    <div class="card-header" role="tab" id = "heading{{this.id}}" >
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{this.id}}" aria-expanded="true" aria-controls="collapse{{this.id}}">
+          {{this.name}}
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapse{{this.id}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{this.id}}">
+      <div class="card-block">
+      	ID: ... {{this.id}}
+
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
   </div>
+
+
+	  {{/each}}
+	</div>
+
+
+
+
+  </div>
+
+
+
+
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+</script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+</script>
 
