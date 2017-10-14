@@ -5,12 +5,12 @@ module.exports = function (app) {
     app.get("/api/rooms/:id", function (req, res) {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.StorageArea
+        // In this case, just db.Item
         db.Room.findOne({
             where: {
                 id: req.params.id
             },
-            include: [db.StorageArea]
+            include: [db.Item]
         }).then(function (dbRoom) {
             res.json(dbRoom);
         });

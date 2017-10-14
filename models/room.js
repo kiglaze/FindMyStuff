@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
     Room.associate = function (models) {
         // Associating Room with StorageArea
         // When a Room is deleted, also delete any associated StorageAreas
-        Room.hasMany(models.StorageArea, {
+        Room.hasMany(models.Item, {
             onDelete: "cascade"
         });
     };

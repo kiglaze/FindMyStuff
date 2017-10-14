@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     Item.associate = function (models) {
         // An item should belong to a storage area compartment
         // An item can't be created without a storage area compartment due to the foreign key constraint
-        Item.belongsTo(models.StorageAreaCompartment, {
+        Item.belongsTo(models.Room, {
             foreignKey: {
                 allowNull: false
             }
