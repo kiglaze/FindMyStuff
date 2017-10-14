@@ -4,5 +4,12 @@
         <h2>Welcome <span class="member-name"></span></h2>
       </div>
     </div>
+    <ul>
+	  {{#each rooms}}
+	  	<li>
+	  	   <p>Name of room: {{this.name}}</p>
+	  	</li>
+	  {{/each}}
+	</ul>
   </div>
 
