@@ -50,6 +50,7 @@ app.set("view engine", "handlebars");
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/room-api-routes.js")(app);
+require("./routes/item-api-routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
