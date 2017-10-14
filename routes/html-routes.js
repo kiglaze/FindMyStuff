@@ -19,7 +19,9 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/members");
     }
-    res.render("index", {});
+    else {
+        res.render("index", {});
+    }
   });
 
   // app.get("/login", function(req, res) {
@@ -34,7 +36,9 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/members");
     }
-    res.render("login", {});
+    else {
+        res.render("login", {});
+    }
   });
 
 
