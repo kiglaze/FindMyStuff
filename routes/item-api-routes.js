@@ -1,4 +1,5 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
   // get a specific item by id
@@ -15,12 +16,31 @@ module.exports = function (app) {
     });
   });
 
+
+  app.get("/api/items/name/:name", isAuthenticated, function (req, res) {
+    db.Item.findAll({
+        include: [
+            {
+                model: db.Room,
+                where: {
+                    UserId: req.user.id
+                }
+            }
+        ],
+        where: {
+            name: req.params.name
+        }
+    }).then(function (dbItems) {
+        res.json(dbItems);
+    });
+  });
+
   // create a new item
   app.post("/api/items", function (req, res) {
-    // Create (add) a new item
-    db.Item.create(req.body).then(function (dbItem) {
-      res.json(dbItem);
-    });
+      // Create (add) a new item
+      db.Item.create(req.body).then(function (dbItem) {
+          res.json(dbItem);
+      });
   });
 
 
@@ -35,9 +55,8 @@ module.exports = function (app) {
     }).then(function (numDeleted) {
       if (numDeleted === 0) {
         return res.status(404).end();
-      }
-      else {
-        res.json(numDeleted);
+      } else {
+          res.json(numDeleted);
       }
     });
   });
