@@ -1,4 +1,5 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
     // get a specific room by id
@@ -12,6 +13,24 @@ module.exports = function (app) {
             }
         }).then(function (dbItem) {
             res.json(dbItem);
+        });
+    });
+
+    app.get("/api/items/name/:name", isAuthenticated, function (req, res) {
+        db.Item.findAll({
+            include: [
+            {
+                model: db.Room,
+                where: {
+                    UserId: req.user.id
+                }
+            }
+            ],
+            where: {
+                name: req.params.name
+            }
+        }).then(function (dbItems) {
+            res.json(dbItems);
         });
     });
 
