@@ -50,7 +50,11 @@ module.exports = function(app) {
 
   app.get("/members", isAuthenticated, function(req, res) {
     db.User.findOne({
-        include: [db.Room],
+        include: [
+        {model: db.Room, include: [
+          {model: db.Item}
+        ]}
+        ],
         where: {
             id: req.user.id
         }
