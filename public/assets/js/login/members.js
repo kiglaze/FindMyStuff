@@ -60,4 +60,20 @@ $(document).ready(function () {
         });
   });
 
+
+  // Adding click handlers for the "Remove Item" buttons
+  $(".item-remove-button").on("click", function () {
+    // extract item id from the id of the button clicked
+    var itemId = parseInt($(this).attr('id').replace(/[^\d]/g, ''), 10);
+
+    // do an API call to delete the item with the specific id
+    $.ajax({
+      method: "DELETE",
+      url: "/api/items/" + itemId
+    })
+        .done(function () {
+          location.reload();
+        });
+  });
+
 });

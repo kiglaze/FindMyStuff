@@ -15,7 +15,7 @@
   			<h2>Welcome <span>{{this.email}}</span></h2>
   		</div>
   	</div>
-  
+
   <div id="accordion" role="tablist" aria-multiselectable="true">
   		{{#each rooms}}
 
@@ -35,7 +35,10 @@
   					This is where the list of items in the room should go.
   					<ul>
   					{{#each this.Items}}
-  						<li>{{this.name}}: {{this.description}}</li>
+  						<li>
+                {{this.name}}: {{this.description}}
+                <button id="item-{{this.id}}-remove-button" class="btn btn-success item-remove-button">Remove</button>
+              </li>
   					{{/each}}
   					</ul>
             <form class="item-form">
