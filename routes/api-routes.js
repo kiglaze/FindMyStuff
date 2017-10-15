@@ -26,7 +26,6 @@ module.exports = function(app) {
     }).catch(function(err) {
       console.log(err);
       res.json(err);
-      // res.status(422).json(err.errors[0].message);
     });
   });
 
