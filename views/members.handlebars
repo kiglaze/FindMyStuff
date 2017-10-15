@@ -26,7 +26,8 @@
 	  </div>
 	</div>
 
-  	<div id="accordion" role="tablist" aria-multiselectable="true">
+  
+  <div id="accordion" role="tablist" aria-multiselectable="true">
   		{{#each rooms}}
 
   		<div class="card">
@@ -48,6 +49,12 @@
   						<li>{{this.name}}: {{this.description}}</li>
   					{{/each}}
   					</ul>
+            <form class="item-form">
+              Name: <input placeholder="Item Name" id="room-{{this.id}}-item-name" type="text" />
+              Description: <input placeholder="Item Description" id="room-{{this.id}}-item-description" type="text" />
+
+              <button type="submit" class="btn btn-success">Add Item to Room</button>
+            </form>
   				</div>
   			</div>
   		</div>
@@ -63,8 +70,8 @@
 
 <br><br>
 <form id="room-form">
-  Name: <input placeholder="Name" id="room-name" type="text" />
-  Description: <input placeholder="Description" id="room-description" type="text" />
+  Name: <input placeholder="Room Name" id="room-name" type="text" />
+  Description: <input placeholder="Room Description" id="room-description" type="text" />
   <input id="user-id" type="hidden" value="{{this.id}}"/>
 
   <button type="submit" class="btn btn-success">Add Room</button>
