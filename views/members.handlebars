@@ -22,6 +22,11 @@
   					ID: ... {{this.id}}
 
   					This is where the list of items in the room should go.
+  					<ul>
+  					{{#each this.Items}}
+  						<li>{{this.name}}</li>
+  					{{/each}}
+  					</ul>
   				</div>
   			</div>
   		</div>
