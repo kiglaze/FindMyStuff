@@ -28,4 +28,8 @@ $(document).ready(function() {
                 location.reload();
             });
     }
+
+    $("#search-items-button").on("click", function() {
+    	alert($("#search-items-bar").val());
+    })
 });

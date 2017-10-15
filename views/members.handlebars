@@ -8,13 +8,24 @@
     </div>
 </nav>
 
-
 <div class="container">
   	<div class="row">
   		<div class="col-md-6 col-md-offset-3">
   			<h2>Welcome <span>{{this.email}}</span></h2>
   		</div>
   	</div>
+
+	<div class="row">
+	  <div class="col-lg-6">
+	    <div class="search-items input-group">
+	      <span class="input-group-btn">
+	        <button id="search-items-button" class="btn btn-default" type="button">Go!</button>
+	      </span>
+	      <input type="text" id="search-items-bar" placeholder="Search for...">
+	    </div>
+	  </div>
+	</div>
+
   	<div id="accordion" role="tablist" aria-multiselectable="true">
   		{{#each rooms}}
 
