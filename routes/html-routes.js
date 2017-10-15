@@ -20,7 +20,7 @@ module.exports = function(app) {
       res.redirect("/members");
     }
     else {
-        res.render("index", {});
+        res.render("login", {});
     }
   });
 
@@ -38,6 +38,17 @@ module.exports = function(app) {
     }
     else {
         res.render("login", {});
+    }
+  });
+
+
+  app.get("/signup", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/members");
+    }
+    else {
+      res.render("signup", {});
     }
   });
 

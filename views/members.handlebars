@@ -1,8 +1,18 @@
-  <div class="container">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/logout">
+                Logout
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
   	<div class="row">
   		<div class="col-md-6 col-md-offset-3">
-  			<h2>Welcome <span class="member-name"></span></h2>
-  			<p>User: {{this.email}}</p>
+  			<h2>Welcome <span>{{this.email}}</span></h2>
   		</div>
   	</div>
   	<div id="accordion" role="tablist" aria-multiselectable="true">
@@ -12,7 +22,7 @@
   			<div class="card-header" role="tab" id = "heading{{this.id}}" >
   				<h5 class="mb-0">
   					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{this.id}}" aria-expanded="true" aria-controls="collapse{{this.id}}">
-  						{{this.name}}
+  						{{this.name}}: {{this.description}}
   					</a>
   				</h5>
   			</div>
@@ -35,7 +45,14 @@
 
   </div>
 
+<br><br>
+<form id="room-form">
+  Name: <input placeholder="Name" id="room-name" type="text" />
+  Description: <input placeholder="Description" id="room-description" type="text" />
+  <input id="user-id" type="hidden" value="{{this.id}}"/>
 
+  <button type="submit" class="btn btn-success">Add Room</button>
+</form>
 
 
 
@@ -49,13 +66,7 @@
 
   <script type="text/javascript" src="/assets/js/login/members.js"></script>
   
-<form id="room-form">
-	Name: <input placeholder="Name" id="room-name" type="text" />
-	Description: <input placeholder="Description" id="room-description" type="text" />
-	<input id="user-id" type="hidden" value="{{this.id}}"/>
 
-	<button type="submit" class="btn btn-success">Add Room</button>
-</form>
 </div>
 
 
