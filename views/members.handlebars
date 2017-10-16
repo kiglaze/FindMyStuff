@@ -1,97 +1,93 @@
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/logout">
-                Logout
-            </a>
-        </div>
-    </div>
+  <span class="navbar-brand">Welcome {{this.email}}</span>
+  <a href="/logout">
+    Logout
+  </a>
 </nav>
 
 <div class="container">
-  	<div class="row">
-  		<div class="col-md-6 col-md-offset-3">
-  			<h2>Welcome <span>{{this.email}}</span></h2>
-  		</div>
-  	</div>
 
-	<div class="row">
-	  <div class="col-lg-6">
-	    <div class="search-items input-group">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="search-items input-group">
 	      <span class="input-group-btn">
-	        <button id="search-items-button" class="btn btn-default" type="button">Go!</button>
+	        <button id="search-items-button" class="btn btn-default" type="button">
+            Go!
+          </button>
 	      </span>
-	      <input type="text" id="search-items-bar" placeholder="Search for...">
-	    </div>
-	  </div>
-	</div>
+        <input type="text" id="search-items-bar" placeholder="Search items here ...">
+      </div>
+    </div>
+  </div>
 
-  
+
   <div id="accordion" role="tablist" aria-multiselectable="true">
-  		{{#each rooms}}
+    {{#each rooms}}
 
-  		<div class="card">
-  			<div class="card-header" role="tab" id = "heading{{this.id}}" >
-  				<h5 class="mb-0">
-  					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{this.id}}" aria-expanded="true" aria-controls="collapse{{this.id}}">
-  						{{this.name}}: {{this.description}}
-  					</a>
-  				</h5>
-  			</div>
+      <div class="card">
+        <div class="card-header" role="tab" id="heading{{this.id}}">
+          <h5 class="mb-0">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{this.id}}" aria-expanded="true"
+               aria-controls="collapse{{this.id}}">
+              <b>{{this.name}}:</b> {{this.description}}
+            </a>
+          </h5>
+        </div>
 
-  			<div id="collapse{{this.id}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{this.id}}">
-  				<div class="card-block">
-  					ID: ... {{this.id}}
-
-  					This is where the list of items in the room should go.
-  					<ul>
-  					{{#each this.Items}}
-  						<li>
-                {{this.name}}: {{this.description}}
-                <button id="item-{{this.id}}-remove-button" class="btn btn-success item-remove-button">X</button>
-              </li>
-  					{{/each}}
-  					</ul>
+        <div id="collapse{{this.id}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{this.id}}">
+          <div class="card-block">
+            <ul>
+              {{#each this.Items}}
+                <li>
+                  <b>{{this.name}}:</b> {{this.description}}
+                  <button id="item-{{this.id}}-remove-button" class="btn btn-success btn-link item-remove-button">X</button>
+                </li>
+              {{/each}}
+            </ul>
             <form class="item-form">
-              Name: <input placeholder="Item Name" id="room-{{this.id}}-item-name" type="text" />
-              Description: <input placeholder="Item Description" id="room-{{this.id}}-item-description" type="text" />
+              Name: <input placeholder="Item Name" id="room-{{this.id}}-item-name" type="text"/>
+              Description: <input placeholder="Item Description" id="room-{{this.id}}-item-description" type="text"/>
 
-              <button type="submit" class="btn btn-success">Add Item</button>
+              <button type="submit" class="btn btn-default">Add Item</button>
             </form>
-  				</div>
-  			</div>
-  		</div>
+          </div>
+        </div>
+      </div>
 
-  		{{/each}}
-
-  	</div>
-
-
-
+    {{/each}}
 
   </div>
 
-<br><br>
-<form id="room-form">
-  Name: <input placeholder="Room Name" id="room-name" type="text" />
-  Description: <input placeholder="Room Description" id="room-description" type="text" />
-  <input id="user-id" type="hidden" value="{{this.id}}"/>
+  <br><br>
+  <div class="row">
+    <div class="col-md-9 col-md-offset-3">
+      <form id="room-form">
+        Name: <input placeholder="Room Name" id="room-name" type="text"/>
+        Description: <input placeholder="Room Description" id="room-description" type="text"/>
+        <input id="user-id" type="hidden" value="{{this.id}}"/>
 
-  <button type="submit" class="btn btn-success">Add Room</button>
-</form>
+        <button type="submit" class="btn btn-default">Add Room</button>
+      </form>
+
+    </div>
+  </div>
 
 
+</div>
 
-  <!-- jQuery first, then Tether, then Bootstrap JS. -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
-  </script>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
-  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+</script>
 
-  <script type="text/javascript" src="/assets/js/login/members.js"></script>
-  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+</script>
+
+<script type="text/javascript" src="/assets/js/login/members.js"></script>
+
 
 </div>
 

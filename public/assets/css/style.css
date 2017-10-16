@@ -1,19 +1,32 @@
 body {
-	background-color: rgb(221,242,235);
-	font-size: 1rem;
-	/*font-family: 'Oxygen', sans-serif;*/
-	/*font-family: 'Indie Flower', cursive;*/
-	font-family: 'Cutive Mono', monospace;
-/*	font-family: 'Anonymous Pro', monospace;*/
-/*	font-family: 'Nothing You Could Do', cursive;*/
-/*	font-family: 'Coming Soon', cursive;*/
-	margin: 1% 1% 1% 1%;
+  background-color: rgb(221, 242, 235);
+  font-size: 1rem;
+  /*font-family: 'Oxygen', sans-serif;*/
+  /*font-family: 'Indie Flower', cursive;*/
+  font-family: 'Open sans', sans-serif;;
+  /*font-family: 'Cutive Mono', monospace;*/
+  /*font-family: 'Anonymous Pro', monospace;*/
+  /*font-family: 'Nothing You Could Do', cursive;*/
+  /*font-family: 'Coming Soon', cursive;*/
+  margin: 1% 1% 1% 1%;
 }
+
 h1 {
-	text-align: center;
-	font-size: 2rem;
+  text-align: center;
+  font-size: 3rem;
 }
+
 .search-items {
-	margin-bottom: 2%;
-	margin-top: 2%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.btn-default,
+.btn-default:hover,
+.btn-default:active,
+.btn-default:visited,
+.btn-default:focus {
+  background-color: #30613b;
+  border-color: #30613b;
+  color: white;
 }
