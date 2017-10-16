@@ -63,18 +63,29 @@ $(document).ready(function () {
   $("#search-items-button").on("click", function() {
   	var itemSearch = $("#search-items-bar").val();
   	var itemNameAjaxUrl = `/api/items/name/${itemSearch}`;
-  	// alert(itemNameAjaxUrl);
+
   	$.get(itemNameAjaxUrl, function(response) {
   		var roomsArray = [];
   		var roomsNamesArray = [];
+  		var roomsIdArray = [];
   		$.each(response, function(key, value) {
   			var room = value.Room;
   			roomsArray.push(room);
   			roomsNamesArray.push(room.name);
+  			roomsIdArray[room.id] = 1;
   		});
 
-  		alert(`Your item is in the following rooms: \n` +
-  			roomsNamesArray.join(", "));
+  		$(".room-collapse").each(function(key, roomCollapse) {
+			console.log("roomCollapse......");
+  			console.log(roomCollapse);
+  			var dataRoomId = $(roomCollapse).attr("data-room-id");
+  			if(roomsIdArray[dataRoomId] == 1 && !$(roomCollapse).hasClass("show")) {
+  				$(roomCollapse).addClass("show");
+  			} else if(typeof roomsIdArray[dataRoomId] === "undefined") {
+  				$(roomCollapse).removeClass("show");
+  			}
+  		});
+
   	});
   })
 

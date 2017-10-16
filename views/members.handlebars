@@ -11,19 +11,17 @@
     <div class="col-lg-6">
       <div class="search-items input-group">
 	      <span class="input-group-btn">
-	        <button id="search-items-button" class="btn btn-default" type="button">
-            Go!
-          </button>
+	      	<button id="search-items-button" type="button" class="btn btn-default btn-lg">
+			  <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+			</button>
 	      </span>
-        <input type="text" id="search-items-bar" placeholder="Search items here ...">
-      </div>
-    </div>
-  </div>
-
+	      <input type="text" id="search-items-bar" placeholder="Search items here...">
+	    </div>
+	  </div>
+	</div>
 
   <div id="accordion" role="tablist" aria-multiselectable="true">
     {{#each rooms}}
-
       <div class="card">
         <div class="card-header" role="tab" id="heading{{this.id}}">
           <h5 class="mb-0">
@@ -34,7 +32,7 @@
           </h5>
         </div>
 
-        <div id="collapse{{this.id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{this.id}}">
+        <div id="collapse{{this.id}}" class="room-collapse collapse" data-room-id="{{this.id}}" role="tabpanel" aria-labelledby="heading{{this.id}}">
           <div class="card-block">
             <ul>
               {{#each this.Items}}
