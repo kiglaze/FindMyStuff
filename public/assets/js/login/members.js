@@ -62,32 +62,39 @@ $(document).ready(function () {
 
   $("#search-items-button").on("click", function() {
   	var itemSearch = $("#search-items-bar").val();
-  	var itemNameAjaxUrl = `/api/items/name/${itemSearch}`;
+  	if(itemSearch.length > 0) {
+	  	var itemNameAjaxUrl = `/api/items/name/${itemSearch}`;
+	  	$.get(itemNameAjaxUrl, function(response) {
+	  		var roomsArray = [];
+	  		var roomsNamesArray = [];
+	  		var roomsIdArray = [];
+	  		$.each(response, function(key, value) {
+	  			var room = value.Room;
+	  			roomsArray.push(room);
+	  			roomsNamesArray.push(room.name);
+	  			roomsIdArray[room.id] = 1;
+	  		});
 
-  	$.get(itemNameAjaxUrl, function(response) {
-  		var roomsArray = [];
-  		var roomsNamesArray = [];
-  		var roomsIdArray = [];
-  		$.each(response, function(key, value) {
-  			var room = value.Room;
-  			roomsArray.push(room);
-  			roomsNamesArray.push(room.name);
-  			roomsIdArray[room.id] = 1;
-  		});
+	  		$(".room-collapse").each(function(key, roomCollapse) {
+	  			var dataRoomId = $(roomCollapse).attr("data-room-id");
+	  			if(roomsIdArray[dataRoomId] == 1 && !$(roomCollapse).hasClass("show")) {
+	  				$(roomCollapse).addClass("show");
+	  			} else if(typeof roomsIdArray[dataRoomId] === "undefined") {
+	  				$(roomCollapse).removeClass("show");
+	  			}
+	  		});
 
-  		$(".room-collapse").each(function(key, roomCollapse) {
-			console.log("roomCollapse......");
-  			console.log(roomCollapse);
-  			var dataRoomId = $(roomCollapse).attr("data-room-id");
-  			if(roomsIdArray[dataRoomId] == 1 && !$(roomCollapse).hasClass("show")) {
-  				$(roomCollapse).addClass("show");
-  			} else if(typeof roomsIdArray[dataRoomId] === "undefined") {
-  				$(roomCollapse).removeClass("show");
-  			}
-  		});
+	  		var $searchResultsMessage = $(".search-items-result-message");
+	  		if(roomsNamesArray.length > 0) {
+		  		var roomsListString = roomsNamesArray.join(", ");
+		  		$searchResultsMessage.text(`The item you searched for (${itemSearch}) was found in the following rooms: ${roomsListString}`);
+	  		} else {
+	  			$searchResultsMessage.text("The item you searched for could not be found.");
+	  		}
 
-  	});
-  })
+	  	});
+  	}
+  });
 
 
   // Adding click handlers for the "Remove Item" buttons
