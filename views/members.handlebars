@@ -48,7 +48,7 @@
   					{{#each this.Items}}
   						<li>
                 {{this.name}}: {{this.description}}
-                <button id="item-{{this.id}}-remove-button" class="btn btn-success item-remove-button">Remove</button>
+                <button id="item-{{this.id}}-remove-button" class="btn btn-success item-remove-button">X</button>
               </li>
   					{{/each}}
   					</ul>
@@ -56,7 +56,7 @@
               Name: <input placeholder="Item Name" id="room-{{this.id}}-item-name" type="text" />
               Description: <input placeholder="Item Description" id="room-{{this.id}}-item-description" type="text" />
 
-              <button type="submit" class="btn btn-success">Add Item to Room</button>
+              <button type="submit" class="btn btn-success">Add Item</button>
             </form>
   				</div>
   			</div>
