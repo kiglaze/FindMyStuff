@@ -30,3 +30,15 @@ h1 {
   border-color: #30613b;
   color: white;
 }
+
+.btn-link {
+  color: darkgreen;
+}
+
+/* unvisited link */
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: darkgreen;
+}
